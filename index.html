@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSana Pro | Future Education</title>
+    
+    <!-- EmailJS Кітапханасы -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("HgG5WhbPbBtzvvHSc");
+        })();
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4834d4; --secondary: #686de0; --bg: #f5f6fa;
+            --card: #ffffff; --text: #2f3640; --accent: #00d2d3;
+        }
+        .dark-mode {
+            --bg: #1e272e; --card: #2f3640; --text: #f5f6fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; transition: 0.5s; scroll-behavior: smooth; }
+
+        .grade-5 { background: #2ecc71 !important; color: white !important; font-weight: bold; border-radius: 5px; }
+        .grade-4 { background: #f1c40f !important; color: white !important; font-weight: bold; border-radius: 5px; }
+        .grade-3 { background: #e67e22 !important; color: white !important; font-weight: bold; border-radius: 5px; }
+        .grade-2 { background: #e74c3c !important; color: white !important; font-weight: bold; border-radius: 5px; }
+
+        /* --- Жаңартылған ТИТУЛЬНЫЙ БЕТ --- */
+        #splash-wrapper {
+            position: absolute; top: 0; left: 0; width: 100%; min-height: 100vh;
+            background: linear-gradient(-45deg, #130f40, #4834d4, #686de0, #00d2d3);
+            background-size: 400% 400%;
+            animation: gradientSplash 15s ease infinite;
+            z-index: 5000; transition: opacity 0.8s ease, top 0.8s ease; 
+            color: white; overflow-x: hidden;
+        }
+        
+        .global-lang-switch {
+            position: absolute; top: 20px; right: 20px; z-index: 5010;
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3); color: white;
+            padding: 8px 15px; border-radius: 20px; font-weight: bold; outline: none; cursor: pointer;
+        }
+        .global-lang-switch option { color: black; }
+
+        #splash-screen-top {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;
+        }
+
+        @keyframes gradientSplash {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Логотипке күшті анимация */
+        .logo-main { 
+            font-family: 'Comfortaa', cursive; font-size: 6rem; font-weight: 700; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5); letter-spacing: 3px;
+            background: -webkit-linear-gradient(#fff, #f1f2f6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+        @keyframes floatLogo {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        .enter-btns { margin-top: 40px; display: flex; gap: 20px; z-index: 2; }
+        .enter-btns .btn { padding: 15px 40px; font-size: 1.1rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 8px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        .enter-btns .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 25px rgba(0,0,0,0.4); }
+
+        .scroll-down-icon {
+            position: absolute; bottom: 40px; cursor: pointer; color: white; opacity: 0.8; transition: 0.3s;
+        }
+        .scroll-down-icon:hover { opacity: 1; transform: scale(1.2); }
+
+        /* Landing Page Ақпараттық бөлімдері */
+        .landing-info-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .landing-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 40px; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2); padding: 40px 20px; border-radius: 25px;
+            transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .feature-card:hover { transform: translateY(-15px); background: rgba(255, 255, 255, 0.2); box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-color: var(--accent); }
+        .feature-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-family: 'Comfortaa', cursive; }
+        .feature-card p { font-size: 1rem; line-height: 1.6; opacity: 0.9; }
+
+        /* Аутентификация терезесі */
+        .auth-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 6000;
+        }
+        .auth-card { 
+            background: rgba(255, 255, 255, 0.98); padding: 40px; border-radius: 30px; 
+            width: 90%; max-width: 450px; text-align: center; position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); color: #2f3640; max-height: 90vh; overflow-y: auto;
+        }
+
+        #app-screen { display: none; min-height: 100vh; }
+        .sidebar {
+            width: 280px; background: var(--card); height: 100vh; position: fixed;
+            padding: 30px 20px; border-right: 1px solid #ddd; z-index: 3000; transition: left 0.3s ease; overflow-y: auto;
+        }
+        .sidebar::-webkit-scrollbar { width: 5px; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        
+        .main-content { margin-left: 280px; width: calc(100% - 280px); padding: 40px; transition: 0.5s;}
+
+        .nav-link {
+            padding: 15px; margin: 8px 0; border-radius: 15px; cursor: pointer;
+            display: flex; align-items: center; gap: 15px; font-weight: 600; transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active { background: var(--primary); color: white; transform: translateX(10px); }
+
+        .btn { padding: 12px 25px; border-radius: 12px; border: none; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .btn-primary { background: var(--primary); color: white; }
+
+        .journal-box { overflow-x: auto; background: var(--card); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 1000px; }
+        th, td { padding: 10px; border: 1px solid #eee; text-align: center; font-size: 0.85rem; }
+        .inp-grade { width: 45px; text-align: center; border: 1px solid #ddd; border-radius: 5px; padding: 5px; }
+        .absent-mark { background-color: #ff7675; color: white; font-weight: bold; }
+
+        #chat-area { height: 350px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 15px; margin-bottom: 20px; display: flex; flex-direction: column; }
+        .msg { margin-bottom: 10px; padding: 10px 15px; border-radius: 10px; max-width: 80%; line-height: 1.4; }
+        .msg.bot { background: var(--primary); color: white; align-self: flex-start; border-bottom-left-radius: 2px;}
+        .msg.user { background: #ddd; align-self: flex-end; border-bottom-right-radius: 2px; color: #333;}
+
+        .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; margin-top: 20px; }
+        .folder-item { 
+            background: var(--card); padding: 20px; border-radius: 20px; text-align: center; 
+            cursor: pointer; transition: 0.3s; border: 1px solid #eee;
+        }
+        .folder-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .folder-item i { color: #f1c40f; margin-bottom: 10px; }
+
+        .file-item {
+            padding: 15px; border: 1px solid #eee; border-radius: 10px; 
+            margin-bottom: 10px; display: flex; justify-content: space-between; 
+            align-items: center; background: #fafafa;
+        }
+
+        .ai-section { text-align: center; padding: 40px 10px; border-radius: 25px; overflow: hidden; position: relative; }
+        .platforms-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(270deg, #1e3c72, #2a5298, #ff7e5f, #00c6ff);
+            background-size: 400% 400%; animation: gradientBG 12s ease infinite; z-index: 0;
+        }
+        .apps { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; position: relative; z-index: 1; }
+        .card-platform {
+            width: 140px; height: 140px; border-radius: 20px; display: flex; align-items: center;
+            justify-content: center; text-decoration: none; font-size: 16px; color: white; font-weight: bold;
+            background: linear-gradient(45deg, #10a37f, #00c6ff, #ff7e5f);
+            background-size: 300% 300%; animation: cardGradient 6s ease infinite;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.4s;
+        }
+        .card-platform:hover { transform: scale(1.1) rotate(2deg); }
+
+        @media (max-width: 768px) {
+            .sidebar { left: -300px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+            #burger { display: block; }
+            .logo-main { font-size: 4rem; }
+        }
+
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .day-group { background: var(--card); border-radius: 15px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .day-header-box { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 10px; border-radius: 10px; text-align: center; font-weight: bold; margin-bottom: 15px; }
+        .lesson { background: rgba(255, 255, 255, 0.5); border-radius: 12px; padding: 12px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; transition: 0.3s; border-left: 5px solid var(--accent); }
+        .break-time { background: rgba(241, 196, 15, 0.2); border-radius: 8px; padding: 5px 10px; text-align: center; font-size: 11px; font-weight: bold; color: #d35400; margin-bottom: 10px; border: 1px dashed #f1c40f; }
+        .dark-mode .lesson { background: #3b4252; border-color: #4c566a; }
+        .lesson:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 15px rgba(0,0,0,0.1); border-left-color: var(--primary); }
+        .lesson-num { background: var(--bg); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; color: var(--text); }
+        .lesson-info { display: flex; flex-direction: column; }
+        .lesson-info .subject { font-weight: bold; font-size: 14px; }
+        .lesson-info .teacher { font-size: 11px; color: gray; }
+
+        .t-chat-container { display: flex; flex-direction: column; height: 65vh; background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid #eee; }
+        .t-chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: var(--bg); }
+        .t-msg { max-width: 75%; padding: 12px 18px; border-radius: 15px; position: relative; line-height: 1.4; }
+        .t-msg.mine { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 2px; }
+        .t-msg.others { align-self: flex-start; background: var(--card); color: var(--text); border-bottom-left-radius: 2px; }
+        .t-msg-sender { font-size: 11px; margin-bottom: 5px; font-weight: bold; color: #f1c40f; }
+        .t-msg.others .t-msg-sender { color: var(--primary); }
+
+        .randomizer-box { text-align: center; padding: 40px; background: var(--card); border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .random-result { font-size: 3.5rem; font-weight: bold; color: var(--primary); margin: 30px 0; min-height: 90px; text-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: 0.2s;}
+        .spin-anim { animation: blurSpin 0.1s infinite; color: #b2bec3; transform: scale(1.1);}
+        @keyframes blurSpin { 0% { opacity: 0.8; transform: translateY(-5px); } 100% { opacity: 1; transform: translateY(5px); } }
+
+        .author-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;}
+        .author-card { background: var(--card); padding: 40px; border-radius: 25px; text-align: center; max-width: 420px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); flex: 1; min-width: 300px;}
+        .author-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: top; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); margin-bottom: 20px; background: #eee;}
+    </style>
+</head>
+<body>
+
+    <!-- ЖАҢАРТЫЛҒАН ТИТУЛЬНЫЙ БЕТ ЖӘНЕ ЛЕНДИНГ -->
+    <div id="splash-wrapper">
+        <select id="lang-switch-global" onchange="switchLang(this.value)" class="global-lang-switch">
+            <option value="kz">Қазақша</option>
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+
+        <section id="splash-screen-top">
+            <div class="logo-main">EduSana</div>
+            <p id="splash-desc" class="animate__animated animate__fadeInUp animate__delay-1s" data-t="splash" style="font-size: 1.3rem; margin-top: 15px; opacity: 0.9; text-align: center; max-width: 600px;">Мұғалімдер, оқушылар және әкімшілікке арналған ақылды, заманауи платформа</p>
+            <div class="enter-btns animate__animated animate__fadeInUp animate__delay-1s">
+                <button class="btn btn-primary" onclick="openAuth('login')" data-t="login" style="background: white; color: var(--primary);">Кіру</button>
+                <button class="btn" style="border: 2px solid white; color: white; background: transparent;" onclick="openAuth('reg')" data-t="reg">Тіркелу</button>
+            </div>
+            <div class="scroll-down-icon animate__animated animate__bounce animate__infinite" onclick="document.getElementById('info-target').scrollIntoView({behavior: 'smooth'})">
+                <i class="fas fa-chevron-down fa-2x"></i>
+            </div>
+        </section>
+
+        <div id="info-target"></div>
+        <section class="landing-info-section">
+            <h2 class="landing-title" data-t="l_who">Бұл платформа кімдерге арналған?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3 data-t="role_dir">Директор / Завуч</h3>
+                    <p data-t="l_who_dir">Мектептің толыққанды статистикасын бақылау, барлық сыныптардың үлгерімі мен мұғалімдердің жүктемесін бір жерден қадағалау мүмкіндігі.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3 data-t="teacher">Мұғалім</h3>
+                    <p data-t="l_who_teacher">Электронды журнал, ҚМЖ,ҰМЖ сақтау қоймасы, кездейсоқ оқушы таңдау рулеткасы және жасанды интеллект көмекшісімен сабақты оңай басқару.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3 data-t="student">Оқушы</h3>
+                    <p data-t="l_who_student">Өз бағаларын көру, сабақ кестесін қадағалау, мұғалім берген тапсырмаларды орындау және пайдалы платформаларға бірден өту.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="landing-info-section" style="background: rgba(0,0,0,0.2);">
+            <h2 class="landing-title" data-t="l_why">Неге дәл бізді таңдау керек? (Артықшылықтар)</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3 data-t="l_adv1_t">Жылдамдық пен Жеңілдік</h3>
+                    <p data-t="l_adv1_d">Ешқандай қатып қалусыз, өте жылдам жұмыс істейтін заманауи интерфейс. Apple стиліндегі минимализм.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3 data-t="l_adv2_t">Sana AI Интеграциясы</h3>
+                    <p data-t="l_adv2_d">Мұғалімдерге сабақ жоспарын құруға, оқушыларға сұрақтарына жауап табуға көмектесетін ақылды көмекші.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3 data-t="l_adv3_t">Қауіпсіздік және Бақылау</h3>
+                    <p data-t="l_adv3_d">Барлық мәліметтер қатаң қорғалған. Әр қолданушы тек өзіне рұқсат етілген ақпаратты ғана көре алады.</p>
+                </div>
+            </div>
+            <div style="margin-top: 50px;">
+                <button class="btn" style="background: var(--accent); color: white; padding: 15px 50px; font-size: 1.2rem; border-radius: 50px;" onclick="window.scrollTo(0,0); setTimeout(()=>openAuth('reg'), 500)" data-t="l_join">Бізге қосылыңыз! 🚀</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- АВТОРИЗАЦИЯ ТЕРЕЗЕСІ -->
+    <div class="auth-overlay" id="auth-overlay">
+        <div class="auth-card animate__animated animate__zoomIn">
+            <div id="auth-main-panel">
+                <h2 id="auth-title" style="color: var(--primary); margin-bottom: 20px; font-size: 2rem;">Кіру</h2>
+                
+                <!-- АВТОРИЗАЦИЯ ӨРІСТЕРІ ОРАМАСЫ (ЖАСЫРУ ҮШІН) -->
+                <div id="auth-fields-wrapper">
+                    <!-- РӨЛ ТАҢДАУ -->
+                    <div id="role-select" style="display:flex; margin-bottom:20px; justify-content:center; gap:10px; font-weight:bold; background: #f1f2f6; padding: 10px; border-radius: 15px; flex-wrap: wrap; font-size: 12px;">
+                        <label style="cursor:pointer"><input type="radio" name="user-role" value="Директор/Завуч" onchange="toggleAuthFields()"> 👔 <span data-t="role_dir">Завуч/Директор</span></label>
+                        <label style="cursor:pointer"><input type="radio" name="user-role" value="Мұғалім" checked onchange="toggleAuthFields()"> 👨‍🏫 <span data-t="teacher">Мұғалім</span></label>
+                        <label style="cursor:pointer"><input type="radio" name="user-role" value="Оқушы" onchange="toggleAuthFields()"> 👨‍🎓 <span data-t="student">Оқушы</span></label>
+                    </div>
+
+                    <!-- ТІРКЕЛУ ӨРІСТЕРІ (Динамикалық) -->
+                    <div id="reg-fields" style="display: none;">
+                        <!-- Оқушыға арналған -->
+                        <div id="student-reg-fields" style="display: none;">
+                            <select id="reg-student-class" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px; font-family:inherit;" onchange="populateStudentNames()">
+                                <option value="">Сынып</option>
+                            </select>
+                            <select id="reg-student-name" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px; font-family:inherit;">
+                                <option value="">Есім</option>
+                            </select>
+                        </div>
+                        <!-- Басқаларға арналған (Мұғалім/Завуч) -->
+                        <input type="text" id="user-name-general" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px;" placeholder="Аты-жөніңіз">
+                        
+                        <div id="teacher-reg-fields" style="display: none;">
+                            <input type="text" id="reg-teacher-subject" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px;" placeholder="Пәніңіз (мысалы: Физика)">
+                            <input type="text" id="reg-teacher-classes" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px;" placeholder="Беретін сыныптарыңыз (мысалы: 8А, 9Б)">
+                        </div>
+                    </div>
+
+                    <!-- ЖАЛПЫ КІРУ/ТІРКЕЛУ ӨРІСТЕРІ -->
+                    <input type="text" id="user-email-phone" class="inp-grade" style="width:100%; height:50px; margin-bottom:15px; border-radius: 12px;" placeholder="Email немесе Телефон номері">
+                    <input type="password" id="user-pass" class="inp-grade" style="width:100%; height:50px; margin-bottom:5px; border-radius: 12px;" placeholder="Құпия сөз (кемі 6 таңба)">
+                    
+                    <p id="forgot-link" onclick="openForgotPass()" style="font-size:13px; color:var(--primary); cursor:pointer; text-align:right; margin-bottom:20px; font-weight:bold;">Құпия сөзді ұмыттыңыз ба?</p>
+                </div>
+                
+                <!-- EMAIL РАСТАУ ПАНЕЛІ (Жасырын) -->
+                <div id="email-verify-panel" style="display: none; padding: 10px 0 20px;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px; color: #666;">Поштаңызға келген 4 таңбалы кодты жазыңыз:</p>
+                    <input type="text" id="verify-code-input" class="inp-grade" placeholder="0000" maxlength="4" style="text-align:center; font-size: 1.8rem; letter-spacing: 8px; font-weight: bold; width: 100%; height: 60px; margin-bottom: 20px; border-radius: 12px;">
+                    <button class="btn" style="background: #00b894; color: white; width: 100%; height: 50px; font-size: 1.1rem; border-radius: 12px;" onclick="confirmVerification()">Тіркелуді аяқтау</button>
+                    <p style="margin-top: 15px; font-size: 0.8rem; color: #e74c3c; cursor: pointer; font-weight: bold;" onclick="cancelVerification()">Кері қайту</p>
+                </div>
+
+                <button class="btn btn-primary" style="width:100%; height: 50px; font-size: 1.1rem; border-radius: 12px;" id="btn-continue" onclick="handleAuth()" data-t="continue">Жалғастыру</button>
+                <p onclick="closeAuth()" id="btn-close" style="margin-top:20px; cursor:pointer; color:#e74c3c; font-weight:bold; letter-spacing: 1px;" data-t="close">ЖАБУ</p>
+            </div>
+
+            <!-- ҚҰПИЯ СӨЗДІ ҚАЛПЫНА КЕЛТІРУ -->
+            <div id="forgot-panel" style="display:none;">
+                <h2 style="font-size: 1.5rem">Құпия сөзді жаңарту</h2><br>
+                <p style="font-size:12px; color:#555; margin-bottom:10px;">Тіркелген поштаңызды жазыңыз</p>
+                <input type="text" id="forgot-email" class="inp-grade" style="width:100%; height:45px; margin-bottom:15px;" placeholder="Email">
+                <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="sendResetCode()">Код жіберу</button>
+                <p onclick="backToAuth()" style="cursor:pointer; color:red; margin-top:10px; font-weight:bold;">Кері қайту</p>
+            </div>
+
+            <div id="reset-panel" style="display:none;">
+                <h2 style="font-size: 1.5rem">Жаңа құпия сөз</h2><br>
+                <p style="font-size:12px; color:green; margin-bottom:10px;">Код жіберілді!<br><b>(Поштаңызды тексеріңіз)</b></p>
+                <input type="text" id="reset-code" class="inp-grade" style="width:100%; height:45px; margin-bottom:15px;" placeholder="Келген 4-санды код">
+                <input type="password" id="new-pass" class="inp-grade" style="width:100%; height:45px; margin-bottom:15px;" placeholder="Жаңа құпия сөз (кемі 6 таңба)">
+                <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" onclick="saveNewPass()">Сақтау және Кіру</button>
+                <p onclick="backToAuth()" style="cursor:pointer; color:red; font-weight:bold;">Кері қайту</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- НЕГІЗГІ ҚОСЫМША БЕТІ -->
+    <div id="app-screen">
+        <aside class="sidebar" id="sidebar">
+            <h2 style="color:var(--primary); display:flex; justify-content:space-between; margin-bottom: 20px;">
+                <span style="font-family: 'Comfortaa', cursive; font-weight:bold;">EduSana</span> 
+                <i class="fas fa-times" style="cursor:pointer; color:#333; display:none;" id="close-burger" onclick="toggleBurger()"></i>
+            </h2>
+            <div class="nav-link active" id="nav-profile" onclick="nav('profile', this)"><i class="fas fa-user"></i> <span data-t="m_profile">Профиль</span></div>
+            <div class="nav-link" id="nav-journal" onclick="nav('journal', this)"><i class="fas fa-table"></i> <span data-t="m_journal" id="sidebar-journal-text">Журнал</span></div>
+            <div class="nav-link" id="nav-tasks" onclick="nav('tasks', this)"><i class="fas fa-tasks"></i> <span data-t="m_tasks">Тапсырмалар</span></div>
+            
+            <div class="nav-link" id="nav-random" onclick="nav('random', this)"><i class="fas fa-dice"></i> <span data-t="m_random">Кездейсоқ таңдау</span></div>
+            
+            <div class="nav-link" id="nav-files" onclick="nav('files', this)"><i class="fas fa-folder"></i> <span data-t="m_files">ҚМЖ Қоймасы</span></div>
+            <div class="nav-link" id="nav-umj" onclick="nav('umj', this)"><i class="fas fa-layer-group"></i> <span data-t="m_umj">ҰМЖ Қоймасы</span></div>
+
+            <div class="nav-link" id="nav-ai" onclick="nav('ai', this)"><i class="fas fa-robot"></i> <span data-t="m_ai">Sana AI</span></div>
+            <div class="nav-link" id="nav-platforms" onclick="nav('platforms', this)"><i class="fas fa-rocket"></i> <span data-t="m_platforms">Платформалар</span></div>
+            <div class="nav-link" id="nav-schedule" onclick="nav('schedule', this)"><i class="fas fa-calendar-alt"></i> <span data-t="m_sched">Кесте</span></div>
+            <div class="nav-link" id="nav-chat" onclick="nav('chat', this)"><i class="fas fa-comments"></i> <span data-t="m_chat">Чат</span></div>
+            
+            <div class="nav-link" id="nav-author" onclick="nav('author', this)"><i class="fas fa-info-circle"></i> <span data-t="m_author">Автор</span></div>
+            
+            <div style="margin-top: 30px; padding-bottom: 20px;">
+                <button class="btn" id="btn-logout" style="width:100%; background:#ff7675; color:white; margin-top: 10px;" onclick="logoutAndReset()" data-t="logout">Шығу / Тазалау</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <div id="burger" style="cursor:pointer; z-index:2000;" onclick="toggleBurger()"><i class="fas fa-bars fa-2x"></i></div>
+                <h2 id="page-title">Жеке кабинет</h2>
+                <button onclick="toggleDark()" class="btn" style="border-radius: 50%; width: 45px; height: 45px; padding: 0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-moon"></i></button>
+            </header>
+            <div id="content-view"></div>
+        </main>
+    </div>
+
+    <script>
+        const langPack = {
+            kz: { 
+                m_profile: "Профиль", m_journal: "Журнал", m_files: "ҚМЖ Қоймасы", m_umj: "ҰМЖ Қоймасы", m_ai: "Sana AI", m_sched: "Кесте", m_platforms: "Платформалар", m_tasks: "Тапсырмалар", m_chat: "Ұстаздар чаты",
+                m_random: "Кездейсоқ таңдау", m_author: "Сайт авторы",
+                excel_btn: "Excel-ге жүктеу", word_btn: "Word-қа жүктеу", select_class: "Сыныпты таңдаңыз",
+                name_col: "Оқушы есімі", mark_col: "Баға", splash: "Мұғалімдер, оқушылар және әкімшілікке арналған ақылды, заманауи платформа",
+                login: "Кіру", reg: "Тіркелу", close: "Жабу", continue: "Жалғастыру", logout: "Шығу / Тазалау",
+                ai_ph: "Сұрақ қойыңыз...", plat_title: "Пайдалы платформалар 🚀", teacher: "Мұғалім", student: "Оқушы", role_dir: "Завуч/Директор",
+                add_task_title: "сыныбына тапсырма қосу", task_title_ph: "Тапсырма тақырыбы", task_desc_ph: "Тапсырма мазмұны",
+                task_link_ph: "YouTube немесе Тест сілтемесі", task_file_lbl: "Файл немесе Сурет:", btn_upload: "Жүктеу",
+                quarter: "тоқсан", class_of: "сыныбының", tasks_of: "тапсырмалары", no_tasks: "Бұл тоқсанда тапсырма жоқ.",
+                date_lbl: "Күні", not_specified: "Көрсетілмеген", my_grades: "Менің бағаларым", class_word: "сыныбы",
+                btn_back: "Артқа", kmj_storage: "ҚМЖ қоймасы", kmj_empty: "Осы тоқсанға әлі ҚМЖ жүктелмеген.",
+                kmj_new_upload: "Жаңа ҚМЖ (файл) жүктеу:", kmj_back_quarters: "Тоқсандарға қайту",
+                umj_storage: "ҰМЖ қоймасы", umj_empty: "Осы тоқсанға әлі ҰМЖ жүктелмеген.",
+                umj_new_upload: "Жаңа ҰМЖ (файл) жүктеу:", umj_back_quarters: "Тоқсандарға қайту",
+                err_login: "Мәліметтер қате немесе рөл дұрыс таңдалмаған!", no_table: "Кесте жоқ!",
+                chat_ph: "Хабарлама жазыңыз...", chat_title: "Мұғалімдер ортасы (Директор, Завуч, Ұстаздар)",
+                l_who: "Бұл платформа кімдерге арналған?", l_who_dir: "Мектептің толыққанды статистикасын бақылау, барлық сыныптардың үлгерімі мен мұғалімдердің жүктемесін бір жерден қадағалау мүмкіндігі.",
+                l_who_teacher: "Электронды журнал, ҚМЖ сақтау қоймасы, кездейсоқ оқушы таңдау рулеткасы және жасанды интеллект көмекшісімен сабақты оңай басқару.",
+                l_who_student: "Өз бағаларын көру, сабақ кестесін қадағалау, мұғалім берген тапсырмаларды орындау және пайдалы платформаларға бірден өту.",
+                l_why: "Неге дәл бізді таңдау керек? (Артықшылықтар)", l_adv1_t: "Жылдамдық пен Жеңілдік", l_adv1_d: "Ешқандай қатып қалусыз, өте жылдам жұмыс істейтін заманауи интерфейс. Apple стиліндегі минимализм.",
+                l_adv2_t: "Sana AI Интеграциясы", l_adv2_d: "Мұғалімдерге сабақ жоспарын құруға, оқушыларға сұрақтарына жауап табуға көмектесетін ақылды көмекші.",
+                l_adv3_t: "Қауіпсіздік және Бақылау", l_adv3_d: "Барлық мәліметтер қатаң қорғалған. Әр қолданушы тек өзіне рұқсат етілген ақпаратты ғана көре алады.", l_join: "Бізге қосылыңыз! 🚀"
+            },
+            ru: { 
+                m_profile: "Профиль", m_journal: "Журнал", m_files: "База КСП", m_umj: "База ДСП", m_ai: "Sana AI", m_sched: "Расписание", m_platforms: "Платформы", m_tasks: "Задания", m_chat: "Чат учителей",
+                m_random: "Случайный выбор", m_author: "Автор сайта",
+                excel_btn: "Скачать Excel", word_btn: "Скачать Word", select_class: "Выберите класс",
+                name_col: "Имя ученика", mark_col: "Оценка", splash: "Умная современная платформа для учителей, учеников и администрации",
+                login: "Войти", reg: "Регистрация", close: "Закрыть", continue: "Продолжить", logout: "Выйти / Очистить",
+                ai_ph: "Задайте вопрос...", plat_title: "Полезные платформы 🚀", teacher: "Учитель", student: "Ученик", role_dir: "Завуч/Директор",
+                add_task_title: "Добавить задание", task_title_ph: "Тема задания", task_desc_ph: "Описание задания",
+                btn_upload: "Загрузить", quarter: "четверть", class_of: "Задания класса", tasks_of: "", no_tasks: "Нет заданий.",
+                date_lbl: "Дата", not_specified: "Не указано", my_grades: "Мои оценки", class_word: "класс",
+                btn_back: "Назад", kmj_storage: "База КСП", kmj_empty: "КСП еще не загружены.",
+                kmj_new_upload: "Загрузить новый КСП:", kmj_back_quarters: "К четвертям",
+                umj_storage: "База ДСП", umj_empty: "ДСП еще не загружены.", umj_new_upload: "Загрузить ДСП:", umj_back_quarters: "К четвертям",
+                err_login: "Неверные данные или роль!", no_table: "Нет таблицы!", chat_ph: "Сообщение...", chat_title: "Учительский состав",
+                l_who: "Для кого эта платформа?", l_who_dir: "Контроль полной статистики школы, успеваемости классов и нагрузки учителей в одном месте.",
+                l_who_teacher: "Электронный журнал, хранилище КСП, рулетка для случайного выбора ученика и умный ИИ помощник.",
+                l_who_student: "Просмотр оценок, расписания, выполнение заданий учителя и быстрый доступ к полезным платформам.",
+                l_why: "Почему выбирают нас? (Преимущества)", l_adv1_t: "Скорость и Легкость", l_adv1_d: "Современный интерфейс без зависаний. Минимализм в стиле Apple.",
+                l_adv2_t: "Интеграция Sana AI", l_adv2_d: "Умный помощник для составления планов уроков и ответов на вопросы учеников.",
+                l_adv3_t: "Безопасность и Контроль", l_adv3_d: "Все данные строго защищены. Каждый пользователь видит только разрешенную информацию.", l_join: "Присоединяйтесь! 🚀"
+            },
+            en: { 
+                m_profile: "Profile", m_journal: "Journal", m_files: "Lesson Plans", m_umj: "Long-term Plans", m_ai: "Sana AI", m_sched: "Schedule", m_platforms: "Platforms", m_tasks: "Tasks", m_chat: "Teachers Chat",
+                m_random: "Randomizer", m_author: "Site Author",
+                excel_btn: "Excel", word_btn: "Word", select_class: "Select class", name_col: "Name", mark_col: "Grade", 
+                splash: "Smart, modern platform for teachers, students and administration", login: "Login", reg: "Register", close: "Close", continue: "Continue", logout: "Logout",
+                ai_ph: "Ask...", plat_title: "Platforms 🚀", teacher: "Teacher", student: "Student", role_dir: "Director", btn_upload: "Upload", 
+                quarter: "quarter", class_of: "Class", tasks_of: "tasks", no_tasks: "No tasks.", date_lbl: "Date", my_grades: "My Grades", class_word: "class",
+                btn_back: "Back", kmj_storage: "Plans", kmj_empty: "No plans.", kmj_new_upload: "Upload Plan:", kmj_back_quarters: "Back",
+                umj_storage: "LTP Plans", umj_empty: "No long-term plans.", umj_new_upload: "Upload LTP:", umj_back_quarters: "Back",
+                err_login: "Invalid login!", no_table: "No table!", chat_ph: "Message...", chat_title: "Teachers Staff",
+                l_who: "Who is this platform for?", l_who_dir: "Control school statistics, class performance, and teacher workload in one place.",
+                l_who_teacher: "Digital journal, plan storage, randomizer, and smart AI assistant.",
+                l_who_student: "View grades, schedule, complete tasks, and access useful platforms.",
+                l_why: "Why choose us? (Advantages)", l_adv1_t: "Speed & Lightness", l_adv1_d: "Modern interface with zero lag. Apple-style minimalism.",
+                l_adv2_t: "Sana AI Integration", l_adv2_d: "Smart assistant for lesson planning and answering student questions.",
+                l_adv3_t: "Security & Control", l_adv3_d: "All data is strictly protected. Users only see authorized information.", l_join: "Join us! 🚀"
+            }
+        };
+        
+        const baseSubjects = ["Математика", "Қазақ тілі", "Орыс тілі", "Ағылшын тілі", "Физика", "Химия", "Биология", "Тарих", "Информатика", "Дене шынықтыру", "География", "Әдебиет"];
+
+        let generatedCode = "";
+        let tempUser = null;
+
+        let curLang = 'kz';
+        let currentClass = '';
+        let currentFolder = '';
+        let currentQuarter = 1; 
+        let currentJournalSubject = baseSubjects[0]; // Әдепкі пән
+        let selectedTaskClass = '';
+        let currentTaskQuarter = 1; 
+        let currentUserInfo = { name: "Мұғалім", role: "Мұғалім", studentClass: "" };
+
+        let classes = [];
+        for (let i = 1; i <= 11; i++) {
+            ['А', 'Ә', 'Б', 'В'].forEach(sec => classes.push(i + sec));
+        }
+
+        const firstNames = ["Абзал", "Айгерім", "Бауыржан", "Бекарыс", "Гүлназ", "Дамир", "Еркебұлан", "Жансая", "Зере", "Илияс", "Кәусар", "Ләззат", "Мұрат", "Нұрлан", "Олжас", "Пәкизат", "Рауан", "Сәния", "Талғат", "Ұлан", "Азамат", "Берік", "Гүлнұр", "Динара", "Ернұр", "Жәнібек", "Заңғар", "Индира", "Қуаныш", "Мәдина", "Мақсат", "Нұргүл", "Перизат", "Руслан", "Салтанат", "Тимур", "Ұлжан", "Фариза", "Хамит", "Шыңғыс", "Шолпан", "Әділет", "Әнел", "Өркен", "Қайрат", "Айсұлу", "Болат", "Гүлмира", "Дархан"];
+        const lastNames = ["Ахметов", "Бақытбек", "Серіков", "Жұмабаев", "Нұртас", "Төлеген", "Қанат", "Мұса", "Исатай", "Бөкей", "Абай", "Құрман", "Рақым", "Болат", "Смағұл", "Тұрсын", "Мәлік", "Әшім", "Дәулет", "Есім", "Оспанов", "Сүлейменов", "Омаров", "Алиев", "Ибрагимов", "Қалиев", "Жақыпов", "Махметов", "Сатыбалдиев", "Тұраров", "Құдайбергенов", "Баймаханов", "Сыздықов", "Кенжебаев", "Әбдірахманов", "Нұрғалиев", "Ералиев", "Исмаилов", "Жұмаділов", "Қасымов"];
+
+        let usersDB = JSON.parse(localStorage.getItem('edusana_users')) || [];
+        let authMode = 'login'; 
+
+        let studentDB = JSON.parse(localStorage.getItem('edusana_db')) || {};
+        let kmjDB = JSON.parse(localStorage.getItem('edusana_kmj')) || {};
+        let umjDB = JSON.parse(localStorage.getItem('edusana_umj')) || {};
+        let tasksDB = JSON.parse(localStorage.getItem('edusana_tasks')) || {};
+        let chatDB = JSON.parse(localStorage.getItem('edusana_chat')) || [];
+
+        function createEmptyQuarter() { return { w: Array(10).fill(''), bjb1: '', bjb2: '', tjb: '' }; }
+
+        let dbUpdated = false;
+        classes.forEach(c => {
+            if (!studentDB[c]) {
+                studentDB[c] = [];
+                for(let i=0; i<20; i++) {
+                    let fn = firstNames[Math.floor(Math.random() * firstNames.length)];
+                    let ln = lastNames[Math.floor(Math.random() * lastNames.length)];
+                    
+                    let subjectsData = {};
+                    baseSubjects.forEach(sub => {
+                        subjectsData[sub] = { quarters: { 1: createEmptyQuarter(), 2: createEmptyQuarter(), 3: createEmptyQuarter(), 4: createEmptyQuarter() } };
+                    });
+
+                    studentDB[c].push({
+                        name: `${fn} ${ln}`,
+                        subjects: subjectsData 
+                    });
+                }
+                dbUpdated = true;
+            } else {
+                // ЕСКІ МӘЛІМЕТТЕРДІ ЖОЙМАЙ ЖАҢА ЖҮЙЕГЕ КӨШІРУ (БҰРЫНҒЫ БАҒАЛАР САҚТАЛАДЫ)
+                studentDB[c].forEach(s => {
+                    if(!s.subjects) {
+                        s.subjects = {};
+                        baseSubjects.forEach(sub => {
+                            if(sub === "Математика") {
+                                s.subjects[sub] = { quarters: s.quarters || { 1: createEmptyQuarter(), 2: createEmptyQuarter(), 3: createEmptyQuarter(), 4: createEmptyQuarter() } };
+                            } else {
+                                s.subjects[sub] = { quarters: { 1: createEmptyQuarter(), 2: createEmptyQuarter(), 3: createEmptyQuarter(), 4: createEmptyQuarter() } };
+                            }
+                        });
+                        delete s.quarters; 
+                        dbUpdated = true;
+                    }
+                });
+            }
+        });
+        if (dbUpdated) localStorage.setItem('edusana_db', JSON.stringify(studentDB));
+
+        function toggleBurger() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+            if(window.innerWidth <= 768) {
+                document.getElementById('close-burger').style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+            }
+        }
+
+        function initClassSelects() {
+            const classSel = document.getElementById('reg-student-class');
+            classSel.innerHTML = '<option value="">Сынып</option>';
+            classes.forEach(c => {
+                classSel.innerHTML += `<option value="${c}">${c}</option>`;
+            });
+        }
+        function populateStudentNames() {
+            const classSel = document.getElementById('reg-student-class').value;
+            const nameSel = document.getElementById('reg-student-name');
+            nameSel.innerHTML = '<option value="">Есім</option>';
+            if(classSel && studentDB[classSel]) {
+                studentDB[classSel].forEach(s => {
+                    nameSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
+                });
+            }
+        }
+
+        function toggleAuthFields() {
+            if(authMode !== 'reg') return;
+            const role = document.querySelector('input[name="user-role"]:checked').value;
+            document.getElementById('student-reg-fields').style.display = 'none';
+            document.getElementById('teacher-reg-fields').style.display = 'none';
+            document.getElementById('user-name-general').style.display = 'none';
+
+            if(role === 'Оқушы') {
+                document.getElementById('student-reg-fields').style.display = 'block';
+            } else if (role === 'Мұғалім') {
+                document.getElementById('user-name-general').style.display = 'block';
+                document.getElementById('teacher-reg-fields').style.display = 'block';
+            } else {
+                document.getElementById('user-name-general').style.display = 'block';
+            }
+        }
+
+        function openAuth(type) { 
+            authMode = type;
+            document.getElementById('auth-overlay').style.display = 'flex'; 
+            document.getElementById('auth-main-panel').style.display = 'block';
+            document.getElementById('forgot-panel').style.display = 'none';
+            document.getElementById('reset-panel').style.display = 'none';
+
+            document.getElementById('email-verify-panel').style.display = 'none';
+            document.getElementById('auth-fields-wrapper').style.display = 'block';
+            document.getElementById('btn-continue').style.display = 'block';
+
+            document.getElementById('auth-title').innerText = langPack[curLang][type];
+            document.getElementById('reg-fields').style.display = (type === 'reg') ? 'block' : 'none';
+            document.getElementById('role-select').style.display = 'flex'; 
+            document.getElementById('forgot-link').style.display = (type === 'login') ? 'block' : 'none';
+            document.getElementById('user-email-phone').placeholder = (type === 'reg') ? 'Email поштаңыз (Міндетті)' : 'Email немесе Телефон номері';
+            
+            if(type === 'reg') {
+                initClassSelects();
+                toggleAuthFields();
+            }
+        }
+        
+        function closeAuth() { document.getElementById('auth-overlay').style.display = 'none'; }
+
+        function handleAuth() {
+            const emailPhone = document.getElementById('user-email-phone').value;
+            const pass = document.getElementById('user-pass').value;
+            const role = document.querySelector('input[name="user-role"]:checked').value;
+            
+            if (authMode === 'reg') {
+                let name = "";
+                let studentClass = "";
+                if(role === 'Оқушы') {
+                    studentClass = document.getElementById('reg-student-class').value;
+                    name = document.getElementById('reg-student-name').value;
+                    if(!studentClass || !name) return alert("Сынып пен есімді таңдаңыз!");
+                } else {
+                    name = document.getElementById('user-name-general').value;
+                }
+
+                if (!name || !emailPhone || !pass) return alert("Барлық мәліметтерді толтырыңыз!");
+                if (pass.length < 6) return alert("Құпия сөз кемінде 6 таңбадан тұруы тиіс!");
+                if (!emailPhone.includes('@')) return alert("Тіркелу үшін міндетті түрде жарамды Email пошта көрсетіңіз!");
+                if (usersDB.some(u => u.email === emailPhone)) return alert("Бұл аккаунт жүйеде тіркелген!");
+                
+                generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+                tempUser = { name, email: emailPhone, pass, role, studentClass };
+
+                const templateParams = { to_name: name, to_email: emailPhone, code: generatedCode };
+
+                const btn = document.getElementById('btn-continue');
+                const originalText = btn.innerText;
+                btn.innerText = "Хат жіберілуде...";
+                btn.disabled = true;
+
+                emailjs.send('service_v4zfh0l', 'template_zk7i6nt', templateParams)
+                    .then(function() {
+                        alert('Растау коды поштаңызға сәтті жіберілді! Поштаңызды тексеріңіз.');
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        document.getElementById('auth-fields-wrapper').style.display = 'none';
+                        document.getElementById('btn-continue').style.display = 'none';
+                        document.getElementById('email-verify-panel').style.display = 'block';
+                    }, function(error) {
+                        alert('Қате орын алды: ' + JSON.stringify(error));
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
+            } else {
+                const user = usersDB.find(u => u.email === emailPhone && u.pass === pass && u.role === role);
+                if (!user) { alert(langPack[curLang].err_login); return; }
+
+                document.getElementById('splash-wrapper').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-wrapper').style.display = 'none';
+                    document.getElementById('app-screen').style.display = 'flex';
+                }, 800);
+                closeAuth();
+                currentUserInfo = { name: user.name, role: user.role, studentClass: user.studentClass };
+                
+                if(currentUserInfo.role === 'Оқушы') {
+                    document.getElementById('nav-files').style.display = 'none';
+                    document.getElementById('nav-umj').style.display = 'none';
+                    document.getElementById('nav-chat').style.display = 'none';
+                    document.getElementById('nav-random').style.display = 'none';
+                    document.getElementById('sidebar-journal-text').innerText = langPack[curLang].my_grades;
+                } else {
+                    document.getElementById('nav-files').style.display = 'flex';
+                    document.getElementById('nav-umj').style.display = 'flex';
+                    document.getElementById('nav-chat').style.display = 'flex';
+                    document.getElementById('nav-random').style.display = 'flex';
+                    document.getElementById('sidebar-journal-text').innerText = langPack[curLang].m_journal;
+                }
+
+                nav('profile');
+            }
+        }
+
+        function confirmVerification() {
+            const userCode = document.getElementById('verify-code-input').value;
+            if (userCode === generatedCode) {
+                usersDB.push(tempUser);
+                localStorage.setItem('edusana_users', JSON.stringify(usersDB));
+                alert("Құттықтаймыз, " + tempUser.name + "! Тіркелу сәтті өтті.");
+                document.getElementById('email-verify-panel').style.display = 'none';
+                document.getElementById('auth-fields-wrapper').style.display = 'block';
+                document.getElementById('btn-continue').style.display = 'block';
+                document.getElementById('verify-code-input').value = '';
+                openAuth('login');
+                document.getElementById('user-pass').value = '';
+            } else { alert("Қате код! Поштаңызды қайта тексеріңіз."); }
+        }
+
+        function cancelVerification() {
+            document.getElementById('email-verify-panel').style.display = 'none';
+            document.getElementById('auth-fields-wrapper').style.display = 'block';
+            document.getElementById('btn-continue').style.display = 'block';
+            document.getElementById('verify-code-input').value = '';
+        }
+
+        function openForgotPass() { document.getElementById('auth-main-panel').style.display = 'none'; document.getElementById('forgot-panel').style.display = 'block'; }
+        function backToAuth() { document.getElementById('forgot-panel').style.display = 'none'; document.getElementById('reset-panel').style.display = 'none'; document.getElementById('auth-main-panel').style.display = 'block'; }
+        
+        let tempResetEmail = '';
+        let resetGeneratedCode = ''; // ЖАҢА АЙНЫМАЛЫ - КОДТЫ САҚТАУ ҮШІН
+
+        function sendResetCode() {
+            tempResetEmail = document.getElementById('forgot-email').value;
+            if (!tempResetEmail) return alert("Мәліметті жазыңыз!");
+
+            let userIndex = usersDB.findIndex(u => u.email === tempResetEmail);
+            if (userIndex === -1) return alert("Мұндай аккаунт тіркелмеген!");
+            
+            let user = usersDB[userIndex];
+            
+            // Жаңа 4-санды код генерациялау
+            resetGeneratedCode = Math.floor(1000 + Math.random() * 9000).toString();
+            
+            const templateParams = { 
+                to_name: user.name, 
+                to_email: tempResetEmail, 
+                code: resetGeneratedCode 
+            };
+
+            const btn = document.querySelector('#forgot-panel button');
+            const originalText = btn.innerText;
+            btn.innerText = "Хат жіберілуде...";
+            btn.disabled = true;
+
+            // EmailJS арқылы тікелей поштаға жіберу
+            emailjs.send('service_v4zfh0l', 'template_zk7i6nt', templateParams)
+                .then(function() {
+                    alert('Құпия сөзді жаңарту коды поштаңызға жіберілді! Поштаңызды тексеріңіз.');
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    document.getElementById('forgot-panel').style.display = 'none';
+                    document.getElementById('reset-panel').style.display = 'block';
+                }, function(error) {
+                    alert('Қате орын алды: ' + JSON.stringify(error));
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+        }
+
+        function saveNewPass() {
+            const code = document.getElementById('reset-code').value;
+            const newPass = document.getElementById('new-pass').value;
+            
+            // Енді "1234" орнына, нақты поштаға барған кодты тексереді
+            if (code !== resetGeneratedCode) return alert("Код қате! Поштаңызға келген кодты жазыңыз.");
+            if (newPass.length < 6) return alert("Жаңа құпия сөз кемінде 6 таңба болуы керек!");
+            
+            let userIndex = usersDB.findIndex(u => u.email === tempResetEmail);
+            if (userIndex !== -1) {
+                usersDB[userIndex].pass = newPass; 
+                localStorage.setItem('edusana_users', JSON.stringify(usersDB));
+                alert("Құпия сөзіңіз сәтті жаңартылды!"); 
+                backToAuth();
+                document.getElementById('user-email-phone').value = tempResetEmail; 
+                document.getElementById('user-pass').value = newPass;
+            }
+        }
+
+        function nav(page, el) {
+            if(el) {
+                document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+                el.classList.add('active');
+            }
+            if(window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('active'); document.getElementById('close-burger').style.display = 'none'; }
+
+            const view = document.getElementById('content-view');
+            let pageTitleText = langPack[curLang]['m_'+page];
+            if(page === 'journal' && currentUserInfo.role === 'Оқушы') pageTitleText = langPack[curLang].my_grades;
+            document.getElementById('page-title').innerText = pageTitleText || page.toUpperCase();
+            view.innerHTML = "";
+
+            if(page === 'profile') {
+                let iconClass = 'fa-user';
+                if(currentUserInfo.role === 'Мұғалім') iconClass = 'fa-chalkboard-teacher';
+                if(currentUserInfo.role === 'Оқушы') iconClass = 'fa-user-graduate';
+                if(currentUserInfo.role === 'Директор/Завуч') iconClass = 'fa-user-tie';
+
+                view.innerHTML = `<div class="animate__animated animate__fadeIn" style="background:var(--card); padding:30px; border-radius:25px; text-align:center;">
+                    <div style="width:120px; height:120px; background:#ddd; border-radius:50%; margin: 0 auto 20px; border:5px solid var(--primary); display:flex; align-items:center; justify-content:center; font-size:40px;"><i class="fas ${iconClass}" style="color:var(--primary)"></i></div>
+                    <h2>${currentUserInfo.name}</h2>
+                    <p style="color:var(--secondary); font-weight:bold; margin-top:10px;">${currentUserInfo.role} ${currentUserInfo.studentClass ? '(' + currentUserInfo.studentClass + ')' : ''}</p>
+                </div>`;
+            } 
+            else if(page === 'journal') {
+                let displayClasses = classes;
+                if(currentUserInfo.role === 'Оқушы') { displayClasses = [currentUserInfo.studentClass]; }
+
+                view.innerHTML = `
+                    <div style="margin-bottom:20px; display:flex; gap:8px; flex-wrap:wrap; max-height: 150px; overflow-y: auto; padding: 10px; background: var(--card); border-radius: 10px;">
+                        ${displayClasses.map(c => `<button class="btn" style="padding:5px 10px; font-size: 12px; border:1px solid var(--primary);" onclick="loadJournal('${c}', 1, '${currentJournalSubject}')">${c}</button>`).join('')}
+                    </div>
+                    <div style="margin-bottom: 20px; display:flex; gap: 10px;">
+                        ${currentUserInfo.role !== 'Оқушы' ? `<button class="btn" style="background:#27ae60; color:white;" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> ${langPack[curLang].excel_btn}</button>
+                        <button class="btn" style="background:#2980b9; color:white;" onclick="exportToWord()"><i class="fas fa-file-word"></i> ${langPack[curLang].word_btn}</button>` : ''}
+                    </div>
+                    <div id="journal-render" class="journal-box animate__animated animate__fadeIn">${langPack[curLang].select_class}</div>`;
+                
+                if(currentUserInfo.role === 'Оқушы') { loadJournal(currentUserInfo.studentClass, 1, currentJournalSubject); }
+            } 
+            else if(page === 'tasks') { renderTasksMain(); } 
+            else if(page === 'files') {
+                view.innerHTML = `<div id="folder-view" class="folder-grid animate__animated animate__fadeIn">${classes.map(c => `<div class="folder-item" onclick="openKMJFolder('${c}')"><i class="fas fa-folder fa-3x" style="color:#f1c40f;"></i><h4>${c}</h4></div>`).join('')}</div>
+                <div id="kmj-editor" style="display:none; background:var(--card); padding:20px; border-radius:20px;"></div>`;
+            } 
+            else if(page === 'umj') {
+                view.innerHTML = `<div id="umj-folder-view" class="folder-grid animate__animated animate__fadeIn">${classes.map(c => `<div class="folder-item" onclick="openUMJFolder('${c}')"><i class="fas fa-layer-group fa-3x" style="color:#9b59b6;"></i><h4>${c}</h4></div>`).join('')}</div>
+                <div id="umj-editor" style="display:none; background:var(--card); padding:20px; border-radius:20px;"></div>`;
+            } 
+            else if(page === 'ai') {
+                view.innerHTML = `<div class="animate__animated animate__fadeIn" style="background:var(--card); padding:20px; border-radius:20px;"><div id="chat-area"></div><div style="display:flex; gap:10px;"><input type="text" id="ai-input" class="inp-grade" style="flex:1; height:45px; text-align:left; padding-left:15px;" placeholder="${langPack[curLang].ai_ph}" onkeypress="if(event.key === 'Enter') askAI()"><button class="btn btn-primary" onclick="askAI()">Sana AI <i class="fas fa-paper-plane"></i></button></div></div>`;
+                setTimeout(() => { document.getElementById('chat-area').innerHTML = `<div class="msg bot">Сәлем! Мен <b>Sana AI</b> - мектеп пен білімге арналған көмекшіңізбін. Сабақ, ҰБТ немесе басқа сұрақтарыңыз болса қоя беріңіз.</div>`; }, 500);
+            } 
+            else if(page === 'platforms') {
+                view.innerHTML = `<div class="ai-section animate__animated animate__fadeIn"><div class="platforms-bg"></div><h2 style="color:white; position:relative; z-index:1; margin-bottom:30px;">${langPack[curLang].plat_title}</h2>
+                <div class="apps">
+                    <a href="https://chat.openai.com" target="_blank" class="card-platform"><span>ChatGPT</span></a>
+                    <a href="https://gemini.google.com" target="_blank" class="card-platform"><span>Gemini</span></a>
+                    <a href="https://www.canva.com" target="_blank" class="card-platform"><span>Canva</span></a>
+                    <a href="https://quizizz.com/" target="_blank" class="card-platform"><span>Quizizz</span></a>
+                    <a href="https://kahoot.com/" target="_blank" class="card-platform"><span>Kahoot!</span></a>
+                </div></div>`;
+            } 
+            else if(page === 'schedule') {
+                let displayClasses = classes;
+                if(currentUserInfo.role === 'Оқушы') { displayClasses = [currentUserInfo.studentClass]; }
+
+                let classBtns = displayClasses.map(c => `<button class="btn" style="padding:5px 10px; margin:5px; border:1px solid var(--primary); font-size:12px;" onclick="loadClassSchedule('${c}')">${c}</button>`).join('');
+                view.innerHTML = `
+                    <div style="margin-bottom:20px; display:flex; flex-wrap:wrap; max-height: 150px; overflow-y: auto; background: var(--card); padding: 10px; border-radius: 10px;">${classBtns}</div>
+                    <h3 id="sched-class-title" style="margin-bottom:15px; color:var(--primary);"></h3>
+                    <div id="sched-render" class="animate__animated animate__fadeIn"></div>
+                `;
+                loadClassSchedule(displayClasses[0]); 
+            }
+            else if(page === 'chat') {
+                view.innerHTML = `
+                    <div class="t-chat-container animate__animated animate__fadeIn">
+                        <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; text-align:center;"><i class="fas fa-users"></i> ${langPack[curLang].chat_title}</div>
+                        <div class="t-chat-messages" id="t-chat-box"></div>
+                        <div class="t-chat-input-area" style="padding:15px; background:var(--card); display:flex; gap:10px; border-top:1px solid #eee;">
+                            <input type="text" id="t-chat-input" class="inp-grade" style="flex:1; height:45px; text-align:left; padding-left:15px;" placeholder="${langPack[curLang].chat_ph}" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                            <button class="btn btn-primary" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                `;
+                loadChatMessages();
+            }
+            else if(page === 'random') {
+                let classOptions = `<option value="">Сынып</option>` + classes.map(c => `<option value="${c}">${c}</option>`).join('');
+                let subjOptions = `<option value="">Пәнді таңдаңыз (Міндетті емес)</option>` + baseSubjects.map(s => `<option value="${s}">${s}</option>`).join('');
+                view.innerHTML = `
+                    <div class="randomizer-box animate__animated animate__zoomIn">
+                        <h2 style="margin-bottom: 20px; color: var(--primary);"><i class="fas fa-magic"></i> Кім тақтаға шығады?</h2>
+                        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+                            <select id="rand-class-sel" class="btn" style="border: 2px solid var(--primary); font-size: 1.1rem; padding: 10px 20px; margin-bottom: 20px; background: transparent; color: var(--text);">
+                                ${classOptions}
+                            </select>
+                            <select id="rand-subj-sel" class="btn" style="border: 2px solid var(--secondary); font-size: 1.1rem; padding: 10px 20px; margin-bottom: 20px; background: transparent; color: var(--text);">
+                                ${subjOptions}
+                            </select>
+                        </div><br>
+                        <button class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 40px; border-radius: 50px;" onclick="startRandomizer()">Таңдау <i class="fas fa-play"></i></button>
+                        <div id="rand-result" class="random-result">?</div>
+                    </div>
+                `;
+            }
+            else if(page === 'author') {
+                view.innerHTML = `
+                    <div class="author-wrap animate__animated animate__fadeInUp">
+                        <div class="author-card">
+                            <img src="student.png" class="author-img" alt="Мұханбек Аянат" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+                            <h3 style="color: var(--primary);">Мұханбек Аянат Ерболатқызы</h3>
+                            <p style="color: gray; font-size: 14px; margin-bottom: 15px;">Жобаның негізін қалаушы / Программист</p>
+                            <p>EduSana платформасының авторы. Білім беру саласын цифрландыру және мұғалімдердің жұмысын жеңілдету мақсатында осы жобаны ойлап таптым.</p>
+                        </div>
+                        <div class="author-card">
+                            <img src="teacher.png" class="author-img" alt="Эльвира Тулепбергеновна" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2922/2922510.png'">
+                            <h3 style="color: var(--secondary);">Адылбекова Эльвира Тулепбергеновна</h3>
+                            <p style="color: gray; font-size: 14px; margin-bottom: 15px;">Жоба жетекшісі / Ғылыми жетекші</p>
+                            <div style="text-align: left; font-size: 0.9rem; line-height: 1.5;">
+                                <p>Өз ісінің нағыз білгір маманы және білім беру саласындағы өте білікті оқытушы. Оның көпжылдық кәсіби тәжірибесі мен терең білімі EduSana жобасының идеялық деңгейден жоғары сапалы бағдарламалық өнімге айналуына негізгі себепкер болды. Оқытушымыздың әрбір берген бағыт-бағдары мен стратегиялық кеңестері платформаның әдістемелік тұрғыда жетілуіне зор септігін тигізді.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function startRandomizer() {
+            let cls = document.getElementById('rand-class-sel').value;
+            if(!cls) return alert("Алдымен сыныпты таңдаңыз!");
+            let students = studentDB[cls].map(s => s.name);
+            let resBox = document.getElementById('rand-result');
+            resBox.className = "random-result spin-anim"; 
+            let spins = 0;
+            let interval = setInterval(() => {
+                resBox.innerText = students[Math.floor(Math.random() * students.length)];
+                spins++;
+                if(spins > 15) {
+                    clearInterval(interval);
+                    resBox.className = "random-result animate__animated animate__tada";
+                    let finalStudent = students[Math.floor(Math.random() * students.length)];
+                    resBox.innerHTML = `🎉 <span style="color:#e74c3c">${finalStudent}</span> 🎉`;
+                }
+            }, 100);
+        }
+
+        // АПТА ҚОСУ ЖӘНЕ АЗАЙТУ ФУНКЦИЯЛАРЫ
+        function addWeek() {
+            studentDB[currentClass].forEach(s => {
+                s.subjects[currentJournalSubject].quarters[currentQuarter].w.push('');
+            });
+            localStorage.setItem('edusana_db', JSON.stringify(studentDB));
+            loadJournal(currentClass, currentQuarter, currentJournalSubject);
+        }
+        
+        function removeWeek() {
+            let currentLength = studentDB[currentClass][0].subjects[currentJournalSubject].quarters[currentQuarter].w.length;
+            if (currentLength <= 1) return alert("Апта санын бұдан әрі азайтуға болмайды!");
+            studentDB[currentClass].forEach(s => {
+                s.subjects[currentJournalSubject].quarters[currentQuarter].w.pop();
+            });
+            localStorage.setItem('edusana_db', JSON.stringify(studentDB));
+            loadJournal(currentClass, currentQuarter, currentJournalSubject);
+        }
+
+        function loadJournal(c, q = currentQuarter, subj = currentJournalSubject) {
+            currentClass = c; currentQuarter = q; currentJournalSubject = subj;
+            const box = document.getElementById('journal-render');
+            
+            // ПӘНДЕР ТАБТАРЫ
+            let subjBtns = `<div style="display:flex; gap:10px; margin-bottom:15px; overflow-x:auto; padding-bottom:5px;">`;
+            baseSubjects.forEach(s => {
+                subjBtns += `<button class="btn ${currentJournalSubject === s ? 'btn-primary' : ''}" style="padding:5px 15px; border:1px solid var(--primary); white-space:nowrap;" onclick="loadJournal('${c}', ${currentQuarter}, '${s}')">${s}</button>`;
+            });
+            subjBtns += `</div>`;
+
+            // ТОҚСАН БАТЫРМАЛАРЫ ЖӘНЕ АПТА ҚОСУ/АЗАЙТУ
+            let quarterBtns = `<div style="display:flex; gap:10px; margin-bottom:15px; align-items:center; flex-wrap: wrap;">`;
+            for(let i=1; i<=4; i++){ quarterBtns += `<button class="btn ${currentQuarter === i ? 'btn-primary' : ''}" style="padding:5px 15px; border:1px solid var(--primary);" onclick="loadJournal('${c}', ${i}, '${currentJournalSubject}')">${i}-${langPack[curLang].quarter}</button>`; }
+            
+            if(currentUserInfo.role !== 'Оқушы') {
+                quarterBtns += `<div style="margin-left:auto; display:flex; gap:5px;">
+                    <button class="btn" style="background:#27ae60; color:white; padding:5px 10px;" onclick="addWeek()"><i class="fas fa-plus"></i> Апта</button>
+                    <button class="btn" style="background:#e74c3c; color:white; padding:5px 10px;" onclick="removeWeek()"><i class="fas fa-minus"></i> Апта</button>
+                </div>`;
+                quarterBtns += `</div><p style="font-size:12px; color:gray; margin-bottom:10px; width: 100%;"><i class="fas fa-info-circle"></i> Ескерту: Оқушы сабаққа келмесе "ж" немесе "Ж" деп жазыңыз. Жүйе оған 0 балл беріп, пайызын азайтады.</p>`;
+            } else {
+                quarterBtns += `</div>`;
+            }
+
+            let wLen = studentDB[c][0].subjects[currentJournalSubject].quarters[currentQuarter].w.length;
+
+            let table = `<table><thead><tr><th>${langPack[curLang].name_col}</th>${Array(wLen).fill(0).map((_,i)=>`<th>А${i+1}</th>`).join('')}<th>БЖБ1</th><th>БЖБ2</th><th>ТЖБ</th><th>%</th><th>${langPack[curLang].mark_col}</th>${currentUserInfo.role !== 'Оқушы' ? `<th><i class="fab fa-whatsapp"></i></th>` : ''}</tr></thead><tbody>`;
+            const isStudent = currentUserInfo.role === 'Оқушы';
+
+            studentDB[c].forEach((s, idx) => {
+                if (isStudent && s.name !== currentUserInfo.name) return;
+                // Жаңа құрылымнан мәлімет алу
+                let sq = s.subjects[currentJournalSubject].quarters[currentQuarter]; 
+                let disabledAttr = isStudent || currentUserInfo.role === 'Директор/Завуч' ? 'disabled style="background:#eee; color:#000;"' : '';
+
+                let wInputs = sq.w.map((v,i) => {
+                    let isAbsent = (v.toString().toLowerCase() === 'ж');
+                    let bgClass = isAbsent ? 'absent-mark' : '';
+                    return `<td><input ${disabledAttr} type="text" class="inp-grade ${bgClass}" value="${v}" onchange="updateGr('${c}',${idx},'w',${i},this.value)"></td>`;
+                }).join('');
+
+                table += `<tr>
+                    <td style="text-align:left; font-weight:${isStudent?'bold':'normal'}">${s.name}</td>
+                    ${wInputs}
+                    <td><input ${disabledAttr} type="number" class="inp-grade" value="${sq.bjb1}" onchange="updateGr('${c}',${idx},'bjb1',0,this.value)"></td>
+                    <td><input ${disabledAttr} type="number" class="inp-grade" value="${sq.bjb2}" onchange="updateGr('${c}',${idx},'bjb2',0,this.value)"></td>
+                    <td><input ${disabledAttr} type="number" class="inp-grade" value="${sq.tjb}" onchange="updateGr('${c}',${idx},'tjb',0,this.value)"></td>
+                    <td id="p-${c}-${idx}">0%</td><td id="m-${c}-${idx}">-</td>
+                    ${currentUserInfo.role !== 'Оқушы' ? `<td><button onclick="sendToWhatsApp('${s.name}')" style="background:#25D366; color:white; border:none; padding:5px 8px; border-radius:5px; cursor:pointer;"><i class="fab fa-whatsapp"></i></button></td>` : ''}
+                </tr>`;
+            });
+            table += `</tbody></table>`;
+            box.innerHTML = `<h3 style="margin-bottom:10px;">${c} ${langPack[curLang].class_word} | ${currentQuarter}-${langPack[curLang].quarter} | Пән: <span style="color:var(--primary)">${currentJournalSubject}</span></h3>` + subjBtns + quarterBtns + table;
+            studentDB[c].forEach((_,i) => calculate(c,i));
+        }
+
+        function updateGr(c, sIdx, field, wIdx, val) {
+            let sq = studentDB[c][sIdx].subjects[currentJournalSubject].quarters[currentQuarter];
+            if(field === 'w') { sq.w[wIdx] = val; } 
+            else { sq[field] = Number(val); }
+            localStorage.setItem('edusana_db', JSON.stringify(studentDB));
+            if(field === 'w') { loadJournal(c, currentQuarter, currentJournalSubject); } 
+            else { calculate(c, sIdx); }
+        }
+
+        function calculate(c, sIdx) {
+            const sq = studentDB[c][sIdx].subjects[currentJournalSubject].quarters[currentQuarter];
+            let sumW = 0;
+            sq.w.forEach(v => {
+                if(v.toString().toLowerCase() === 'ж') { sumW += 0; } 
+                else if(!isNaN(Number(v)) && v !== '') { sumW += Number(v); }
+            });
+            const total = sumW + Number(sq.bjb1) + Number(sq.bjb2) + Number(sq.tjb);
+            
+            // Апта санына байланысты максимал баллды динамикалық есептеу (Әр апта 10 балл, БЖБ/ТЖБ 65 балл деп алсақ)
+            const maxTotal = (sq.w.length * 10) + 65; 
+            const percent = Math.round((total / maxTotal) * 100); 
+            
+            const pCell = document.getElementById(`p-${c}-${sIdx}`);
+            const mCell = document.getElementById(`m-${c}-${sIdx}`);
+            if(!pCell || !mCell) return;
+            
+            pCell.innerText = percent + "%";
+            let mark = 2, colorClass = 'grade-2';
+            if (percent >= 85) { mark = 5; colorClass = 'grade-5'; }
+            else if (percent >= 65) { mark = 4; colorClass = 'grade-4'; }
+            else if (percent >= 40) { mark = 3; colorClass = 'grade-3'; }
+            
+            mCell.innerText = mark; mCell.className = colorClass;
+        }
+
+        function askAI() {
+            const inp = document.getElementById('ai-input'); const box = document.getElementById('chat-area');
+            let q = inp.value.trim(); if(!q) return;
+            box.innerHTML += `<div class="msg user animate__animated animate__fadeInRight">${q}</div>`;
+            inp.value = ""; box.scrollTop = box.scrollHeight;
+            setTimeout(() => {
+                let answer = "Жақсы сұрақ! Бұл туралы нақтырақ ұстазыңыздан сұрап білсеңіз болады немесе интернеттен іздеп көріңіз.";
+                let qLow = q.toLowerCase();
+                if(qLow.includes("сәлем")) answer = "Сәлеметсіз бе! Мен EduSana жасанды интеллектімін.";
+                else if(qLow.includes("ұбт")) answer = "ҰБТ-ға дайындалу үшін ең бастысы - жүйелілік.";
+                box.innerHTML += `<div class="msg bot animate__animated animate__fadeInLeft"><b>Sana AI:</b> ${answer}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 1000);
+        }
+
+        function loadClassSchedule(className) {
+            document.getElementById('sched-class-title').innerText = `${className} сыныбының сабақ кестесі`;
+            let days = ["Дүйсенбі", "Сейсенбі", "Сәрсенбі", "Бейсенбі", "Жұма"];
+            let times = ["08:00 - 08:45", "08:50 - 09:35", "09:45 - 10:30", "10:40 - 11:25", "11:35 - 12:20", "12:25 - 13:10"];
+            let breakTimes = ["08:45 - 08:50 (5 мин)", "09:35 - 09:45 (10 мин)", "10:30 - 10:40 (10 мин)", "11:25 - 11:35 (10 мин)", "12:20 - 12:25 (5 мин)"];
+            
+            let html = '<div class="schedule-grid">';
+            days.forEach((day, dIdx) => {
+                html += `<div class="day-group"><div class="day-header-box">${day}</div>`;
+                let lessonCount = 5 + (dIdx % 2); 
+                for(let i=0; i<lessonCount; i++) {
+                    let subjIdx = (dIdx * 3 + i * 2 + className.charCodeAt(0) + className.charCodeAt(className.length-1)) % baseSubjects.length;
+                    let subj = baseSubjects[subjIdx];
+                    html += `<div class="lesson"><div class="lesson-num">${i+1}</div><div class="lesson-info"><span class="subject">${subj}</span><span class="teacher">${times[i]} | Каб: ${300 + (subjIdx * 2)}</span></div></div>`;
+                    if(i < lessonCount - 1 && i < breakTimes.length) { html += `<div class="break-time"><i class="fas fa-mug-hot"></i> Үзіліс: ${breakTimes[i]}</div>`; }
+                }
+                html += `</div>`;
+            });
+            html += '</div>'; document.getElementById('sched-render').innerHTML = html;
+        }
+
+        function loadChatMessages() {
+            const box = document.getElementById('t-chat-box'); if(!box) return;
+            if(chatDB.length === 0) { box.innerHTML = `<p style="text-align:center; color:gray; margin-top:20px;">Чат әзірге бос. Бірінші болып хабарлама жазыңыз!</p>`; return; }
+            box.innerHTML = chatDB.map(m => `
+                <div class="t-msg ${m.sender === currentUserInfo.name ? 'mine' : 'others'}">
+                    ${m.sender !== currentUserInfo.name ? `<div class="t-msg-sender">${m.sender} (${m.role})</div>` : ''}
+                    <div>${m.text}</div><div style="font-size: 10px; opacity: 0.7; text-align: right; margin-top: 5px;">${m.time}</div>
+                </div>
+            `).join(''); box.scrollTop = box.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const inp = document.getElementById('t-chat-input'); const text = inp.value.trim(); if(!text) return;
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            chatDB.push({ sender: currentUserInfo.name, role: currentUserInfo.role, text: text, time: time });
+            localStorage.setItem('edusana_chat', JSON.stringify(chatDB)); inp.value = ''; loadChatMessages();
+        }
+
+        function renderTasksMain() {
+            const view = document.getElementById('content-view');
+            let displayClasses = classes; if(currentUserInfo.role === 'Оқушы') { displayClasses = [currentUserInfo.studentClass]; }
+
+            view.innerHTML = `
+                <div style="margin-bottom:20px; display:flex; gap:8px; flex-wrap:wrap; max-height: 150px; overflow-y: auto; background: var(--card); padding: 10px; border-radius: 10px;">
+                    ${displayClasses.map(c => `<button class="btn" style="padding:5px 10px; font-size:12px;" onclick="selectClassTasks('${c}', 1)">${c}</button>`).join('')}
+                </div>
+                <div id="tasks-container" style="display:none" class="animate__animated animate__fadeIn">
+                    <div id="task-quarter-btns" style="display:flex; gap:10px; margin-bottom:15px;"></div>
+                    ${currentUserInfo.role === 'Мұғалім' ? `
+                    <div style="background:var(--card); padding:25px; border-radius:20px; margin-bottom:30px; border:1px solid #eee;">
+                        <h3><span id="task-class-title"></span> ${langPack[curLang].add_task_title}</h3><br>
+                        
+                        <select id="t-subject" class="inp-grade" style="width:100%; height:45px; margin-bottom:10px;">
+                            <option value="">Пәнді таңдаңыз</option>
+                            ${baseSubjects.map(s => `<option value="${s}">${s}</option>`).join('')}
+                        </select>
+                        
+                        <input type="text" id="t-title" class="inp-grade" style="width:100%; height:45px; margin-bottom:10px;" placeholder="${langPack[curLang].task_title_ph}">
+                        <textarea id="t-desc" class="inp-grade" style="width:100%; height:80px; margin-bottom:10px; text-align:left;" placeholder="${langPack[curLang].task_desc_ph}"></textarea>
+                        <div style="display:flex; gap:10px; margin-bottom:10px;">
+                            <input type="text" id="t-link" class="inp-grade" style="flex:1; height:45px;" placeholder="${langPack[curLang].task_link_ph}">
+                            <input type="date" id="t-date" class="inp-grade" style="width:150px; height:45px;">
+                        </div>
+                        <div style="margin-bottom:15px;"><input type="file" id="t-file"></div>
+                        <button class="btn btn-primary" onclick="saveTask()">${langPack[curLang].btn_upload}</button>
+                    </div>` : ''}
+                    <div id="tasks-list"></div>
+                </div>`;
+            if(currentUserInfo.role === 'Оқушы') { selectClassTasks(currentUserInfo.studentClass, 1); }
+        }
+        
+        function selectClassTasks(c, q = currentTaskQuarter) {
+            selectedTaskClass = c; currentTaskQuarter = q; document.getElementById('tasks-container').style.display = 'block';
+            if(currentUserInfo.role === 'Мұғалім') { document.getElementById('task-class-title').innerText = `${c} (${q}-${langPack[curLang].quarter})`; document.getElementById('t-date').valueAsDate = new Date(); }
+            let qBtns = '';
+            for(let i=1; i<=4; i++){ qBtns += `<button class="btn ${currentTaskQuarter === i ? 'btn-primary' : ''}" style="padding:5px 15px; border:1px solid var(--primary);" onclick="selectClassTasks('${c}', ${i})">${i}-${langPack[curLang].quarter}</button>`; }
+            document.getElementById('task-quarter-btns').innerHTML = qBtns; renderClassTasksList();
+        }
+        
+        function saveTask() {
+            const subject = document.getElementById('t-subject').value, title = document.getElementById('t-title').value, desc = document.getElementById('t-desc').value, link = document.getElementById('t-link').value, dateVal = document.getElementById('t-date').value, file = document.getElementById('t-file').files[0];
+            if(!subject) return alert("Пәнді таңдаңыз!");
+            if(!title) return alert("Тақырыпты толтырыңыз!");
+            if(file && file.size > 2 * 1024 * 1024) return alert("Файл көлемі 2MB-тан аспауы тиіс!");
+
+            let displayDate = dateVal ? dateVal : new Date().toLocaleDateString();
+            if(file) {
+                const reader = new FileReader(); 
+                reader.onload = function(e) { finishSavingTask({ id: Date.now(), subject, title, desc, link, date: displayDate, file: { name: file.name, data: e.target.result }}); }; 
+                reader.readAsDataURL(file);
+            } else { 
+                finishSavingTask({ id: Date.now(), subject, title, desc, link, date: displayDate, file: null }); 
+            }
+        }
+        
+        function finishSavingTask(task) {
+            if(!tasksDB[selectedTaskClass]) tasksDB[selectedTaskClass] = { 1:[], 2:[], 3:[], 4:[] };
+            tasksDB[selectedTaskClass][currentTaskQuarter].push(task); 
+            try {
+                localStorage.setItem('edusana_tasks', JSON.stringify(tasksDB)); renderClassTasksList();
+                document.getElementById('t-title').value = ''; document.getElementById('t-desc').value = ''; document.getElementById('t-link').value = ''; document.getElementById('t-file').value = '';
+            } catch (err) { alert("Қате: Сайт жады (память) толды!"); tasksDB[selectedTaskClass][currentTaskQuarter].pop(); }
+        }
+
+        function renderClassTasksList() {
+            const list = document.getElementById('tasks-list');
+            if(!tasksDB[selectedTaskClass]) tasksDB[selectedTaskClass] = { 1:[], 2:[], 3:[], 4:[] };
+            const tasks = tasksDB[selectedTaskClass][currentTaskQuarter] || [];
+            list.innerHTML = `<h4>${langPack[curLang].class_of} ${selectedTaskClass} | ${currentTaskQuarter}-${langPack[curLang].quarter} ${langPack[curLang].tasks_of}:</h4><br>`;
+            if(tasks.length === 0) { list.innerHTML += `<p style="color:#777">${langPack[curLang].no_tasks}</p>`; return; }
+            tasks.forEach((t, idx) => {
+                let media = '';
+                if(t.link) media += `<a href="${t.link}" target="_blank" style="margin-right:15px; color:var(--primary); font-weight:bold; text-decoration:none;"><i class="fab fa-youtube"></i> Сілтеме</a>`;
+                if(t.file) media += `<a href="${t.file.data}" download="${t.file.name}" style="color:var(--accent); font-weight:bold; text-decoration:none;"><i class="fas fa-file-download"></i> ${t.file.name}</a>`;
+                list.innerHTML += `<div class="animate__animated animate__fadeInUp" style="background:var(--card); padding:15px; border-radius:15px; margin-bottom:10px; border-left:5px solid var(--primary); box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+                    <div style="display:flex; justify-content:space-between;">
+                        <strong><span style="background:var(--secondary); color:white; padding:2px 6px; border-radius:5px; font-size:11px; margin-right:5px;">${t.subject || 'Жалпы'}</span> ${t.title}</strong>
+                        ${currentUserInfo.role === 'Мұғалім' ? `<button onclick="deleteTaskItem('${selectedTaskClass}', ${idx})" style="color:red; border:none; background:none; cursor:pointer;"><i class="fas fa-trash"></i></button>` : ''}
+                    </div>
+                    <p style="font-size:14px; margin:5px 0; color:#555;">${t.desc}</p>
+                    <div style="margin-top:10px;">${media}</div><div style="margin-top:10px; color:gray; font-size:11px; font-weight:bold;"><i class="fas fa-calendar"></i> ${langPack[curLang].date_lbl}: ${t.date}</div>
+                </div>`;
+            });
+        }
+        function deleteTaskItem(c, idx) { if(confirm("Өшіру?")) { tasksDB[c][currentTaskQuarter].splice(idx, 1); localStorage.setItem('edusana_tasks', JSON.stringify(tasksDB)); renderClassTasksList(); } }
+
+        // ҚМЖ (KMJ)
+        function openKMJFolder(c) {
+            currentFolder = c; const view = document.getElementById('folder-view'), editor = document.getElementById('kmj-editor'); editor.style.display = 'none';
+            view.innerHTML = `<div style="width:100%; margin-bottom:20px;"><button class="btn" style="border:1px solid #ccc" onclick="nav('files', document.querySelector('#nav-files'))"><i class="fas fa-arrow-left"></i> ${langPack[curLang].btn_back}</button><h3 style="margin-top:15px; color:var(--primary);">${c} ${langPack[curLang].kmj_storage}</h3></div>${[1,2,3,4].map(q => `<div class="folder-item animate__animated animate__zoomIn" onclick="openKMJQuarter('${c}', ${q})"><i class="fas fa-folder-open fa-3x" style="color:#f1c40f"></i><h4>${q}-${langPack[curLang].quarter}</h4></div>`).join('')}`;
+        }
+        function openKMJQuarter(c, q) { document.getElementById('folder-view').style.display = 'none'; const editor = document.getElementById('kmj-editor'); editor.style.display = 'block'; editor.className = "animate__animated animate__fadeIn"; if (!kmjDB[c]) kmjDB[c] = {}; if (!kmjDB[c][q]) kmjDB[c][q] = []; renderKMJFiles(c, q); }
+        function renderKMJFiles(c, q) {
+            const editor = document.getElementById('kmj-editor'), files = kmjDB[c][q] || [];
+            let filesHTML = files.length === 0 ? `<p style="color:#777; margin:15px 0;">${langPack[curLang].kmj_empty}</p>` : '';
+            files.forEach((f, idx) => { filesHTML += `<div class="file-item"><div><span style="background:var(--primary); color:white; padding:2px 5px; border-radius:5px; font-size:10px; margin-bottom:5px; display:inline-block;">${f.subject || 'Жалпы'}</span><br><i class="fas fa-file-word" style="color:#2980b9; margin-right:10px;"></i> <a href="${f.data}" download="${f.name}" style="text-decoration:none; color:var(--text); font-weight:bold;">${f.name}</a><br><small style="color:gray"><i class="fas fa-calendar"></i> ${f.date}</small></div><button onclick="deleteKMJFile('${c}', ${q}, ${idx})" style="color:red; border:none; background:none; cursor:pointer;"><i class="fas fa-trash"></i></button></div>`; });
+            editor.innerHTML = `<button class="btn" style="border:1px solid #ccc; margin-bottom:15px;" onclick="document.getElementById('folder-view').style.display='grid'; document.getElementById('kmj-editor').style.display='none';"><i class="fas fa-arrow-left"></i> ${langPack[curLang].kmj_back_quarters}</button><h3 style="color:var(--primary); margin-bottom:15px;">${c} | ${q}-${langPack[curLang].quarter} ҚМЖ</h3>
+            <div style="background:#f1f2f6; padding:15px; border-radius:10px; margin-bottom:20px;">
+                <select id="kmj-upload-subject" class="inp-grade" style="margin-bottom:10px; width:100%; height:40px;">
+                    <option value="">Пәнді таңдаңыз</option>
+                    ${baseSubjects.map(s => `<option value="${s}">${s}</option>`).join('')}
+                </select><br>
+                <input type="file" id="kmj-upload-file" style="margin-bottom:10px;"><br><input type="date" id="kmj-upload-date" class="inp-grade" style="margin-bottom:10px; width:150px; height:40px;"><br><button class="btn btn-primary" onclick="uploadKMJFile('${c}', ${q})">${langPack[curLang].btn_upload}</button>
+            </div><div id="kmj-files-list">${filesHTML}</div>`;
+            document.getElementById('kmj-upload-date').valueAsDate = new Date();
+        }
+        function uploadKMJFile(c, q) { 
+            const subject = document.getElementById('kmj-upload-subject').value, file = document.getElementById('kmj-upload-file').files[0], dateInput = document.getElementById('kmj-upload-date').value; 
+            if (!subject) return alert("Пәнді таңдаңыз!");
+            if (!file) return alert("Файлды таңдаңыз!"); 
+            if(file.size > 2 * 1024 * 1024) return alert("ҚМЖ файлы тым үлкен (2MB-тан көп).");
+            let displayDate = dateInput ? dateInput : new Date().toLocaleDateString(); 
+            const reader = new FileReader(); 
+            reader.onload = function(e) { 
+                kmjDB[c][q].push({ subject: subject, name: file.name, data: e.target.result, date: displayDate }); 
+                try { localStorage.setItem('edusana_kmj', JSON.stringify(kmjDB)); renderKMJFiles(c, q); } 
+                catch(err) { alert("Сайт жады толды! ҚМЖ сақталмады."); kmjDB[c][q].pop(); }
+            }; reader.readAsDataURL(file); 
+        }
+        function deleteKMJFile(c, q, idx) { if (confirm("Файлды өшіресіз бе?")) { kmjDB[c][q].splice(idx, 1); localStorage.setItem('edusana_kmj', JSON.stringify(kmjDB)); renderKMJFiles(c, q); } }
+
+        // ҰМЖ (UMJ) - ҮЗІЛГЕН КОД ТОЛЫҚТЫРЫЛДЫ
+        function openUMJFolder(c) {
+            currentFolder = c; const view = document.getElementById('umj-folder-view'), editor = document.getElementById('umj-editor'); editor.style.display = 'none';
+            view.innerHTML = `<div style="width:100%; margin-bottom:20px;"><button class="btn" style="border:1px solid #ccc" onclick="nav('umj', document.querySelector('#nav-umj'))"><i class="fas fa-arrow-left"></i> ${langPack[curLang].btn_back}</button><h3 style="margin-top:15px; color:var(--primary);">${c} ${langPack[curLang].umj_storage}</h3></div>${[1,2,3,4].map(q => `<div class="folder-item animate__animated animate__zoomIn" onclick="openUMJQuarter('${c}', ${q})"><i class="fas fa-folder-open fa-3x" style="color:#9b59b6"></i><h4>${q}-${langPack[curLang].quarter}</h4></div>`).join('')}`;
+        }
+        function openUMJQuarter(c, q) { document.getElementById('umj-folder-view').style.display = 'none'; const editor = document.getElementById('umj-editor'); editor.style.display = 'block'; editor.className = "animate__animated animate__fadeIn"; if (!umjDB[c]) umjDB[c] = {}; if (!umjDB[c][q]) umjDB[c][q] = []; renderUMJFiles(c, q); }
+        function renderUMJFiles(c, q) {
+            const editor = document.getElementById('umj-editor'), files = umjDB[c][q] || [];
+            let filesHTML = files.length === 0 ? `<p style="color:#777; margin:15px 0;">${langPack[curLang].umj_empty}</p>` : '';
+            files.forEach((f, idx) => { filesHTML += `<div class="file-item"><div><span style="background:var(--primary); color:white; padding:2px 5px; border-radius:5px; font-size:10px; margin-bottom:5px; display:inline-block;">${f.subject || 'Жалпы'}</span><br><i class="fas fa-file-pdf" style="color:#e74c3c; margin-right:10px;"></i> <a href="${f.data}" download="${f.name}" style="text-decoration:none; color:var(--text); font-weight:bold;">${f.name}</a><br><small style="color:gray"><i class="fas fa-calendar"></i> ${f.date}</small></div><button onclick="deleteUMJFile('${c}', ${q}, ${idx})" style="color:red; border:none; background:none; cursor:pointer;"><i class="fas fa-trash"></i></button></div>`; });
+            editor.innerHTML = `<button class="btn" style="border:1px solid #ccc; margin-bottom:15px;" onclick="document.getElementById('umj-folder-view').style.display='grid'; document.getElementById('umj-editor').style.display='none';"><i class="fas fa-arrow-left"></i> ${langPack[curLang].umj_back_quarters}</button><h3 style="color:var(--primary); margin-bottom:15px;">${c} | ${q}-${langPack[curLang].quarter} ҰМЖ</h3>
+            <div style="background:#f1f2f6; padding:15px; border-radius:10px; margin-bottom:20px;">
+                <select id="umj-upload-subject" class="inp-grade" style="margin-bottom:10px; width:100%; height:40px;">
+                    <option value="">Пәнді таңдаңыз</option>
+                    ${baseSubjects.map(s => `<option value="${s}">${s}</option>`).join('')}
+                </select><br>
+                <input type="file" id="umj-upload-file" style="margin-bottom:10px;"><br><input type="date" id="umj-upload-date" class="inp-grade" style="margin-bottom:10px; width:150px; height:40px;"><br><button class="btn btn-primary" onclick="uploadUMJFile('${c}', ${q})">${langPack[curLang].btn_upload}</button>
+            </div><div id="umj-files-list">${filesHTML}</div>`;
+            document.getElementById('umj-upload-date').valueAsDate = new Date();
+        }
+        function uploadUMJFile(c, q) { 
+            const subject = document.getElementById('umj-upload-subject').value, file = document.getElementById('umj-upload-file').files[0], dateInput = document.getElementById('umj-upload-date').value; 
+            if (!subject) return alert("Пәнді таңдаңыз!");
+            if (!file) return alert("Файлды таңдаңыз!"); 
+            if(file.size > 2 * 1024 * 1024) return alert("ҰМЖ файлы тым үлкен (2MB-тан көп).");
+            let displayDate = dateInput ? dateInput : new Date().toLocaleDateString(); 
+            const reader = new FileReader(); 
+            reader.onload = function(e) { 
+                umjDB[c][q].push({ subject: subject, name: file.name, data: e.target.result, date: displayDate }); 
+                try { localStorage.setItem('edusana_umj', JSON.stringify(umjDB)); renderUMJFiles(c, q); } 
+                catch(err) { alert("Сайт жады толды! ҰМЖ сақталмады."); umjDB[c][q].pop(); }
+            }; reader.readAsDataURL(file); 
+        }
+        function deleteUMJFile(c, q, idx) { if (confirm("Файлды өшіресіз бе?")) { umjDB[c][q].splice(idx, 1); localStorage.setItem('edusana_umj', JSON.stringify(umjDB)); renderUMJFiles(c, q); } }
+
+        // --- ЖАҢАДАН ҚОСЫЛҒАН ФУНКЦИЯЛАР (EXCEL, WORD, WHATSAPP, LOGOUT) --- //
+
+        function exportToExcel() {
+            let table = document.querySelector("#journal-render table");
+            if (!table) return alert(langPack[curLang].no_table);
+            
+            let cloneTable = table.cloneNode(true);
+            
+            // WhatsApp бағанасын экспорттан алып тастау
+            if(currentUserInfo.role !== 'Оқушы') {
+                let ths = cloneTable.querySelectorAll("th");
+                if(ths.length > 0) ths[ths.length-1].remove();
+                cloneTable.querySelectorAll("tr").forEach(tr => {
+                    let tds = tr.querySelectorAll("td");
+                    if(tds.length > 0) tds[tds.length-1].remove();
+                });
+            }
+            
+            // Input ішіндегі мәндерді кәдімгі мәтінге айналдыру
+            cloneTable.querySelectorAll("input").forEach(inp => {
+                inp.parentElement.innerHTML = inp.value;
+            });
+            
+            let html = `
+                <html xmlns:x="urn:schemas-microsoft-com:office:excel">
+                <head><meta charset="utf-8"></head>
+                <body>${cloneTable.outerHTML}</body>
+                </html>
+            `;
+            let blob = new Blob(['\ufeff', html], { type: 'application/vnd.ms-excel' });
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `Журнал_${currentClass}_${currentJournalSubject}.xls`;
+            a.click();
+        }
+
+        function exportToWord() {
+            let table = document.querySelector("#journal-render table");
+            if (!table) return alert(langPack[curLang].no_table);
+            
+            let cloneTable = table.cloneNode(true);
+            
+            // WhatsApp бағанасын экспорттан алып тастау
+            if(currentUserInfo.role !== 'Оқушы') {
+                let ths = cloneTable.querySelectorAll("th");
+                if(ths.length > 0) ths[ths.length-1].remove();
+                cloneTable.querySelectorAll("tr").forEach(tr => {
+                    let tds = tr.querySelectorAll("td");
+                    if(tds.length > 0) tds[tds.length-1].remove();
+                });
+            }
+            
+            // Input ішіндегі мәндерді кәдімгі мәтінге айналдыру
+            cloneTable.querySelectorAll("input").forEach(inp => {
+                inp.parentElement.innerHTML = inp.value;
+            });
+            
+            let html = "<html xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'></head><body>" + cloneTable.outerHTML + "</body></html>";
+            let blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `Журнал_${currentClass}_${currentJournalSubject}.doc`;
+            a.click();
+        }
+
+        function sendToWhatsApp(studentName) {
+            let sIdx = studentDB[currentClass].findIndex(s => s.name === studentName);
+            if(sIdx === -1) return;
+            
+            let pCell = document.getElementById(`p-${currentClass}-${sIdx}`);
+            let mCell = document.getElementById(`m-${currentClass}-${sIdx}`);
+            
+            let percent = pCell ? pCell.innerText : "0%";
+            let mark = mCell ? mCell.innerText : "-";
+            
+            let msg = `Сәлеметсіз бе!\nМен ${currentUserInfo.name}, ${currentJournalSubject} пәнінің мұғалімімін.\nСіздің балаңыз ${studentName} ${currentQuarter}-тоқсанда мынадай нәтиже көрсетті:\nҮлгерім пайызы: ${percent}\nТоқсандық баға: ${mark}`;
+            
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function logoutAndReset() {
+            if(confirm("Жүйеден шыққыңыз келе ме?")) {
+                localStorage.removeItem('edusana_users');
+                localStorage.removeItem('edusana_db');
+                localStorage.removeItem('edusana_kmj');
+                localStorage.removeItem('edusana_umj');
+                localStorage.removeItem('edusana_tasks');
+                localStorage.removeItem('edusana_chat');
+                location.reload();
+            }
+        }
+
+    </script>
+</body>
+</html>
